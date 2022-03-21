@@ -1,0 +1,22 @@
+#home{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 90vh;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#home::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: url("https://img.wallpapersafari.com/desktop/1920/1080/48/20/Wo8MES.jpg") no-repeat center center/cover;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    opacity: .8;
+}

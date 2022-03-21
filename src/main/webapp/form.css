@@ -1,0 +1,154 @@
+.form{
+    margin: auto;
+    width: 50%;
+    border: 3px rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+.login_form>a{
+    text-decoration: none;
+}
+#home{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+#home::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: url("https://img.wallpapersafari.com/desktop/1920/1080/48/20/Wo8MES.jpg") no-repeat center center/cover;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    opacity: .8;
+}
+.box-form {
+    margin: 0 auto;
+    width: 70%;
+    max-height: 520px;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex: 1 1 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    box-shadow: 0 0 20px 6px rgba(230, 231, 235, 0.52);
+    border-radius: 10px;
+}
+@media (max-width: 980px) {
+    .box-form {
+        flex-flow: wrap;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+    }
+}
+.box-form div {
+    height: auto;
+}
+.box-form .left {
+    color: #111;
+    overflow: hidden;
+}
+.box-form .left .overlay {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.box-form .left .overlay h1 {
+    font-size: 10vmax;
+    line-height: 1;
+    font-weight: 900;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.box-form .left .overlay span p {
+    margin-top: 30px;
+    font-weight: 900;
+}
+.box-form .left .overlay span a {
+    background: #3b5998;
+    color: #FFFFFF;
+    margin-top: 10px;
+    padding: 14px 50px;
+    border-radius: 100px;
+    display: inline-block;
+    box-shadow: 0 3px 6px 1px #042d4657;
+}
+.box-form .left .overlay span a:last-child {
+    background: #1dcaff;
+    margin-left: 30px;
+}
+.box-form .right {
+    padding: 40px;
+    overflow: hidden;
+}
+@media (max-width: 980px) {
+    .box-form .right {
+        width: 100%;
+    }
+}
+.box-form .right h5 {
+    font-size: 6vmax;
+    line-height: 0;
+}
+.box-form .right p {
+    font-size: 14px;
+    color: white;
+}
+.box-form .right .inputs {
+    overflow: hidden;
+}
+.box-form .right input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 25px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+.box-form .right .remember-me--forget-password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box-form .right .remember-me--forget-password input {
+    margin: 0;
+    margin-right: 7px;
+    width: auto;
+}
+.box-form .right .button {
+    float: right;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 35px;
+    border-radius: 50px;
+    display: inline-block;
+    border: 0;
+    outline: 0;
+    box-shadow: 0px 4px 20px 0px #49c628a6;
+    background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+}
