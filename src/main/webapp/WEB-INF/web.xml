@@ -53,6 +53,14 @@
         <servlet-name>view</servlet-name>
         <url-pattern>/view</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>cancel</servlet-name>
+        <servlet-class>com.servlet.CancelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cancel</servlet-name>
+        <url-pattern>/cancel</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>Authentication</filter-name>
         <filter-class>com.filter.AuthenticationFilter</filter-class>
