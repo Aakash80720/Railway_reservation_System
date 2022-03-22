@@ -23,11 +23,12 @@ public class SearchRequest {
             statement.setString(1,pnrNumber);
             ResultSet result = statement.executeQuery();
             while (result.next()){
+                System.out.println(result.getString("name"));
                 passenger = new Passenger(
                         result.getInt("serial_no"),
                         result.getString("name"),
                         result.getInt("age"),
-                        ""+result.getInt("phone_number"),
+                        result.getString("phone_number"),
                         result.getInt("seat_no"),
                         result.getString("berth_position"),
                         result.getString("berth_status"),
