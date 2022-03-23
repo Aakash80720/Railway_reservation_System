@@ -9,8 +9,8 @@
   <nav class="navbar">
     <ul>
       <li><a href="login.jsp">User Login</a></li>
-      <li><a href="#">View Booking</a></li>
-      <li><a href="adminLogin.jsp">Admin Login</a></li>
+      <li><a href="viewAvailable">View Available</a></li>
+      <li><a href="admin">Admin Login</a></li>
     </ul>
   </nav>
 

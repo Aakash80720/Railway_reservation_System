@@ -8,7 +8,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-@WebServlet(name = "registration", value = "/registration")
 public class RegistrationServlet extends HttpServlet {
     User user;
     RegisterDao register = new RegisterDao();

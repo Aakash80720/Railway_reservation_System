@@ -45,6 +45,30 @@
         <servlet-name>search</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>view</servlet-name>
+        <servlet-class>com.servlet.ViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>view</servlet-name>
+        <url-pattern>/view</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>cancel</servlet-name>
+        <servlet-class>com.servlet.CancelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cancel</servlet-name>
+        <url-pattern>/cancel</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>viewAvailable</servlet-name>
+        <servlet-class>com.servlet.AvailableServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewAvailable</servlet-name>
+        <url-pattern>/viewAvailable</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>Authentication</filter-name>
         <filter-class>com.filter.AuthenticationFilter</filter-class>
@@ -54,6 +78,14 @@
         <url-pattern>/login</url-pattern>
     </filter-mapping>
     <filter>
+        <filter-name>admin</filter-name>
+        <filter-class>com.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>admin</filter-name>
+        <url-pattern>/admin</url-pattern>
+    </filter-mapping>
+    <filter>
         <filter-name>validation</filter-name>
         <filter-class>com.filter.ValidationFilter</filter-class>
     </filter>
@@ -61,4 +93,7 @@
         <filter-name>validation</filter-name>
         <url-pattern>/registration</url-pattern>
     </filter-mapping>
+    <session-config>
+        <session-timeout>5</session-timeout>
+    </session-config>
 </web-app>

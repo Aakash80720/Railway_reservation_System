@@ -27,7 +27,7 @@
 
         <div class="right">
             <p>Admin Access which should have the valid Admin Code please ensure that was correct !</p>
-            <form action="adminlogin" method="post">
+            <form action="admin" method="post">
                 <div class="inputs">
 
                     <input class="input" placeholder="Admin Name" name="username" type="text" required>

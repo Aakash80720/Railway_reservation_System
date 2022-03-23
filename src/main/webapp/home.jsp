@@ -27,8 +27,9 @@
 <section class ="navbar">
     <H5>Zylker Railways</H5>
     <div class="options">
-        <a class="links" href="#">home</a>
-        <a class="links" href="#">View Available</a>
+        <a class="links" href="home.jsp">home</a>
+        <a class="links" href="view">View Tickets</a>
+        <a class="links" href="viewAvailable">view Available</a>
         <div style="display: flex;align-items: center;flex-direction: column" class="user">
             <h3>${username}</h3>
             <form action="logout" method="post">
@@ -47,7 +48,7 @@
                    type="tel" name="search"
                    title="PNR number must have 7 digits number" pattern="[0-9]{7}"
                    required/>
-            <button class="fa-2x" type="submit">
+            <button class="fa-2x" type="submit" >
                 search
             </button>
         </form>
@@ -80,7 +81,6 @@
                 <td>${passenger.getBerth_status()}</td>
                 <td>${passenger.getBerthPosition()}</td>
                 <td>${passenger.getPhoneNumber()}</td>
-                <td><a href="#">Cancel</a> </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -133,10 +133,10 @@
                 html += '<td>' +
                     '<select class="form-select" id="preference" name="berth" required>'
                     +'<option value="any">any</option>'
-                    +'<option value="upper">Upper</option>'
-                    +'<option value="middle">Middle</option>'
-                    +'<option value="lower">Lower</option>'
-                    +'<option value="side">Side</option>'
+                    +'<option value="UB">UB</option>'
+                    +'<option value="MB">MB</option>'
+                    +'<option value="LB">LB</option>'
+                    +'<option value="SU">SU</option>'
                     +'</select></td>'
                 if (number > 1){
                     html += '<td><button type="button" name="remove"' +

@@ -48,8 +48,9 @@ html{
 .options{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 300px;
+    justify-content: space-evenly;
+    width: 500px;
+    min-width: 500px;
     margin-right: 10px;
 }
 .links{
