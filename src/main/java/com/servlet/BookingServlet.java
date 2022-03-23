@@ -13,7 +13,6 @@ import java.util.Arrays;
 
 import static com.model.User.getPnr;
 
-@WebServlet(name = "booking", value = "/booking")
 public class BookingServlet extends HttpServlet {
     Booking booking;
     User user;

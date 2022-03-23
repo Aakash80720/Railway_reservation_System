@@ -9,7 +9,6 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "search", value = "/search")
 public class SearchServlet extends HttpServlet {
     SearchRequest search = new SearchRequest();
     @Override

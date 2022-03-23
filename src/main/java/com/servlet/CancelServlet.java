@@ -8,7 +8,6 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "CancelServlet", value = "/CancelServlet")
 public class CancelServlet extends HttpServlet {
     CancelTickets cancel = new CancelTickets();
     @Override
@@ -17,12 +16,12 @@ public class CancelServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             if(cancel.cancelTickets(seatNo)){
-                out.println("<script='javascript/text'");
+                out.println("<script type =\"javascript/text\"");
                 out.println("alert('passenger has canceled')");
                 out.println("</script>");
             }
             else {
-                out.println("<script='javascript/text'");
+                out.println("<script type =\"javascript/text\"");
                 out.println("alert('passenger has not able to cancel')");
                 out.println("</script>");
             }

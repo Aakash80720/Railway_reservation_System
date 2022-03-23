@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "view", value = "/view")
 public class ViewServlet extends HttpServlet {
     GetTickets getTickets = new GetTickets();
     @Override

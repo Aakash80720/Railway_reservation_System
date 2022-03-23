@@ -27,8 +27,9 @@
 <section class ="navbar">
     <H5>Zylker Railways</H5>
     <div class="options">
-        <a class="links" href="#">home</a>
+        <a class="links" href="home.jsp">home</a>
         <a class="links" href="view">View Tickets</a>
+        <a class="links" href="viewAvailable">view Available</a>
         <div style="display: flex;align-items: center;flex-direction: column" class="user">
             <h3>${username}</h3>
             <form action="logout" method="post">
