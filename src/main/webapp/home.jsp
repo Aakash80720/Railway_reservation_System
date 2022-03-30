@@ -19,10 +19,7 @@
 </head>
 <body>
 <%
-    if(session.getAttribute("username") == null) {
-        response.sendRedirect("login.jsp");
-    }
-    int c = 1;
+//   response.setHeader("Cache-Control","no-cache,no-store,must-validate");
 %>
 <section class ="navbar">
     <H5>Zylker Railways</H5>
@@ -64,6 +61,7 @@
             <th scope="col">PNR Number</th>
             <th scope="col">Name</th>
             <th scope="col">Age</th>
+            <th scope="col">coach No</th>
             <th scope="col">Seat No</th>
             <th scope="col">Berth Status</th>
             <th scope="col">Berth Position</th>
@@ -77,6 +75,7 @@
                 <td>${passenger.getPnr_no()}</td>
                 <td>${passenger.getName()}</td>
                 <td>${passenger.getAge()}</td>
+                <td>${passenger.getCoach_no()}</td>
                 <td>${passenger.getSeatNumber()}</td>
                 <td>${passenger.getBerth_status()}</td>
                 <td>${passenger.getBerthPosition()}</td>
@@ -137,6 +136,7 @@
                     +'<option value="MB">MB</option>'
                     +'<option value="LB">LB</option>'
                     +'<option value="SU">SU</option>'
+                    +'<option value="SL">test</option>'
                     +'</select></td>'
                 if (number > 1){
                     html += '<td><button type="button" name="remove"' +
@@ -174,7 +174,7 @@
                             alert(result);
                         }
                         else {
-                            var result = "Ticket Not able to book!!!" ;
+                            var result = "Ticket has been Booked" ;
                             alert(result);
                         }
                     },

@@ -27,6 +27,11 @@
         response.sendRedirect("home.jsp");
     }
 %>
+<%
+    if(session.getAttribute("adminname") != null) {
+        response.sendRedirect("admin.jsp");
+    }
+%>
 <section id="home">
     <div class="box-form">
         <div class="left">

@@ -5,8 +5,18 @@ public class Berth {
     private boolean berthStatus;
     private String Status;
     private String berthPostion;
+    private int coachNo;
 
-    public Berth(int seatNo, boolean berthStatus, String status, String berthPostion) {
+    public int getCoachNo() {
+        return coachNo;
+    }
+
+    public void setCoachNo(int coachNo) {
+        this.coachNo = coachNo;
+    }
+
+    public Berth(int coachNo , int seatNo, boolean berthStatus, String status, String berthPostion) {
+        this.coachNo = coachNo;
         this.seatNo = seatNo;
         this.berthStatus = berthStatus;
         Status = status;

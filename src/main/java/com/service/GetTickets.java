@@ -49,7 +49,8 @@ public class GetTickets {
                         result.getInt("seat_no"),
                         result.getString("berth_position"),
                         result.getString("berth_status"),
-                        result.getString("pnr_no")
+                        result.getString("pnr_no"),
+                        result.getInt("coach_no")
                 );
                 tickets.add(passenger);
             }

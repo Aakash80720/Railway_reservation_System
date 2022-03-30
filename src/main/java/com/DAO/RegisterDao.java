@@ -2,7 +2,6 @@ package com.DAO;
 
 import com.model.User;
 import com.service.DatabaseConnection;
-import com.service.PasswordEncryption;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +9,6 @@ import java.sql.PreparedStatement;
 public class RegisterDao {
     DatabaseConnection database = new DatabaseConnection();
     Connection connection;
-    PasswordEncryption encryption = new PasswordEncryption();
     public boolean registerDao(User user) throws Exception{
         System.out.println("PNR number :"+user.getPnrNumber());
         try {
