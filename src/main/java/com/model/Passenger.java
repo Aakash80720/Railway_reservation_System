@@ -9,8 +9,17 @@ public class Passenger {
     private String berthPosition;
     private String berth_status;
     private String pnr_no;
+    private int coach_no;
 
-    public Passenger(int serialNumber, String name, int age, String phoneNumber, int seatNumber, String berthPosition, String berth_status, String pnr_no) {
+    public int getCoach_no() {
+        return coach_no;
+    }
+
+    public void setCoach_no(int coach_no) {
+        this.coach_no = coach_no;
+    }
+
+    public Passenger(int serialNumber, String name, int age, String phoneNumber, int seatNumber, String berthPosition, String berth_status, String pnr_no, int coach_no) {
         this.serialNumber = serialNumber;
         this.name = name;
         this.age = age;
@@ -19,6 +28,7 @@ public class Passenger {
         this.berthPosition = berthPosition;
         this.berth_status = berth_status;
         this.pnr_no = pnr_no;
+        this.coach_no = coach_no;
     }
 
     public int getSerialNumber() {

@@ -19,7 +19,7 @@
 <section class ="navbar">
     <H5>Zylker Railways</H5>
     <div class="options">
-        <a class="links" href="#">home</a>
+        <a class="links" href="/home.jsp">home</a>
         <a class="links" href="view">View Tickets</a>
         <div style="display: flex;align-items: center;flex-direction: column" class="user">
             <h3>${username}</h3>
@@ -35,6 +35,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th scope="col">#Coach No</th>
                 <th scope="col">#Seat No</th>
                 <th scope="col">Seat Status</th>
                 <th scope="col">Berth Position</th>
@@ -44,6 +45,7 @@
             <tbody>
             <c:forEach var="seat" items="${available}">
                 <tr id="row">
+                    <th scope="row">${seat.getCoachNo()}</th>
                     <th scope="row">${seat.getSeatNo()}</th>
                     <td>${seat.getStatus()}</td>
                     <td>${seat.getBerthPostion()}</td>

@@ -3,28 +3,26 @@ package com.service;
 import com.model.Passenger;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchRequest {
+public class GetPassengers {
     DatabaseConnection database = new DatabaseConnection();
     Connection connection;
-    Passenger passenger;
-    List<Passenger> passengers;
-    public List<Passenger> getSearch(String pnrNumber) throws Exception{
-        passengers = new ArrayList<>();
+    Passenger pas;
+    List<Passenger> passenger;
+    public List<Passenger> getPassengers() throws Exception{
+        passenger = new ArrayList<>();
         try {
             connection = database.getConnection();
-            String sql = "select * from public.\"passengers\" where pnr_no = ?";
+            String sql = "select * from public.\"passengers\"";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,pnrNumber);
             ResultSet result = statement.executeQuery();
             while (result.next()){
                 System.out.println(result.getString("name"));
-                passenger = new Passenger(
+                pas = new Passenger(
                         result.getInt("serial_no"),
                         result.getString("name"),
                         result.getInt("age"),
@@ -33,17 +31,16 @@ public class SearchRequest {
                         result.getString("berth_position"),
                         result.getString("berth_status"),
                         result.getString("pnr_no"),
-                        result.getInt("coach_no")
-                );
-                passengers.add(passenger);
+                        result.getInt("coach_no"));
+                passenger.add(pas);
             }
-
-        }catch (Exception e){
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
         finally {
             connection.close();
         }
-        return  passengers;
+        return passenger;
     }
 }

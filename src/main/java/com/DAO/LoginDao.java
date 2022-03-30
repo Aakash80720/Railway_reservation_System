@@ -1,5 +1,6 @@
 package com.DAO;
 
+import com.model.Admin;
 import com.model.User;
 import com.service.DatabaseConnection;
 
@@ -12,7 +13,7 @@ public class LoginDao {
     Connection connection;
     public static User user;
     public static Admin admin;
-    public boolean loginDao(String username, String phoneNumber,String password){
+    public String loginDao(String username, String phoneNumber,String password){
         try {
             String sql = "select * from public.\"user\" " +
                     "where user_name = ? and phone_number = ? and password = ?;";
@@ -23,22 +24,34 @@ public class LoginDao {
             statement.setString(3,password);
             ResultSet result = statement.executeQuery();
             if(result.next()){
-                user = new User(
-                        result.getString("user_name"),
-                        result.getInt("age"),
-                        result.getString("password"),
-                        result.getString("phone_number")
-                );
-                user.setPnrNumber(result.getString("PNR_NO"));
-                return  true;
+                if(!result.getBoolean("isadmin")) {
+                    user = new User(
+                            result.getString("user_name"),
+                            result.getInt("age"),
+                            result.getString("password"),
+                            result.getString("phone_number")
+                    );
+                    user.setPnrNumber(result.getString("PNR_NO"));
+                    return "User";
+                }
+                else {
+                    admin = new Admin(
+                            result.getString("user_name"),
+                            result.getString("password"),
+                            result.getString("phone_number"),
+                            result.getString("PNR_NO")
+                    );
+                    return "Admin";
+                }
+
             }
             else {
-                return false;
+                return "false";
             }
         }
         catch (Exception e){
             e.printStackTrace();
-            return false;
+            return "false";
         }
     }
     public boolean adminLogin(String username,String password,String phoneNumber,String code){

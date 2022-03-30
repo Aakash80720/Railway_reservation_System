@@ -20,11 +20,12 @@ public class Available {
         available = new ArrayList<>();
         try {
             connection = database.getConnection();
-            String sql = "select * from public.\"coach_table\" order by seat_no asc ";
+            String sql = "select * from public.\"coach_table\" where berth_status = TRUE order by coach_no,seat_no asc ";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()){
                 berth = new Berth(
+                        result.getInt("coach_no"),
                         result.getInt("seat_no"),
                         result.getBoolean("berth_status"),
                         result.getString("Status"),
