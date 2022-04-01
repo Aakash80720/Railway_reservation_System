@@ -70,6 +70,14 @@
         <servlet-name>viewAvailable</servlet-name>
         <url-pattern>/viewAvailable</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>refresh</servlet-name>
+        <servlet-class>com.servlet.RefreshServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>refresh</servlet-name>
+        <url-pattern>/refresh</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>Authentication</filter-name>
         <filter-class>com.filter.AuthenticationFilter</filter-class>

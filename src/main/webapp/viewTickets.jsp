@@ -59,8 +59,8 @@
                     <td>${passenger.getPnr_no()}</td>
                     <td>${passenger.getName()}</td>
                     <td>${passenger.getAge()}</td>
-                    <td>${passenger.getCoach_no()}</td>
-                    <td>${passenger.getSeatNumber()}</td>
+                    <td>${passenger.getSeatNumber() == 0 ? '---' : passenger.getCoach_no()}</td>
+                    <td>${passenger.getSeatNumber() == 0 ? '---' : passenger.getSeatNumber()}</td>
                     <td>${passenger.getBerth_status()}</td>
                     <td>${passenger.getBerthPosition()}</td>
                     <td>${passenger.getPhoneNumber()}</td>

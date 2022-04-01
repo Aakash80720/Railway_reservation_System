@@ -42,8 +42,34 @@
         <input type="number" class="input-group" name="cabin_count">
         <input type="submit" value="Add" class="btn btn-success">
     </form>
+    <table>
+        <tr>
+            <form id="refresh" method="post" action="refresh">
+                <td>Refresh the Booking</td>
+                <td><input type="submit" class="btn btn-success"></td>
+            </form>
+
+        </tr>
+    </table>
 </div>
-<%--<script type="text/javascript">--%>
+<script type="text/javascript">
+    $(document).ready(function (){
+        var form = $('#refresh');
+        form.on('submit',function (e){
+            e.preventDefault();
+            $.ajax({
+                type:form.attr('method'),
+                url:form.attr('action'),
+                data:form.serialize(),
+                success:function (res){
+                    alert(res);
+                },
+                error:function (res){
+                    alert(res);
+                }
+            })
+        })
+    })
 <%--    $(document).ready(function (){--%>
 <%--        var form = ('#addForm');--%>
 <%--        form.on('submit',function (e) {--%>
@@ -61,6 +87,6 @@
 <%--            })--%>
 <%--        })--%>
 <%--    })--%>
-<%--</script>--%>
+</script>
 </body>
 </html>
