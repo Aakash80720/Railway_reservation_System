@@ -13,22 +13,21 @@ public class BookTickets {
     FindBerth findBerth = new FindBerth();
     Passenger passenger;
     public boolean bookTickets(Booking booking,String pnrNumber,String userId) throws Exception{
-
-        if(booking.getBerthPreference().equals("any")){
-            try {
-                return bookAny(booking, pnrNumber, userId);
-            }
-            catch (Exception e){
-                e.printStackTrace();
-                return false;
-            }
-            finally {
-                connection.close();
+        if(booking.getAge() < 60) {
+            if (booking.getBerthPreference().equals("any")) {
+                try {
+                    return bookAny(booking, pnrNumber, userId);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return false;
+                } finally {
+                    connection.close();
+                }
+            } else {
+                return bookPreference(booking, booking.getBerthPreference(), pnrNumber, userId);
             }
         }
-        else {
-            return bookPreference(booking, pnrNumber, userId);
-        }
+        else return bookPreference(booking,"LB",pnrNumber,userId);
     }
     public boolean bookAny(Booking booking,String pnrNumber,String userId) throws Exception{
         try {
@@ -43,18 +42,34 @@ public class BookTickets {
                 coach_no = result.getInt("coach_no");
                 System.out.println(seat_no);
                 String berth =  findBerth.findBerth(seat_no);
-                if(!berth.equals("RAC")) status = "CNF";
+                if(!berth.equals("SL")) status = "CNF";
                 else status = "RAC";
-                passenger = new Passenger(
-                        1,booking.getUserName(), booking.getAge(),
-                        ""+booking.getPhoneNumber(),seat_no,berth,status,pnrNumber,
-                        coach_no
-                );
-                setTicket(passenger,userId);
-                ToggleStatus(seat_no,coach_no);
+                if(booking.getAge() > 5) {
+                    passenger = new Passenger(
+                            1, booking.getUserName(), booking.getAge(),
+                            booking.getPhoneNumber(), seat_no, berth, status, pnrNumber,
+                            coach_no
+                    );
+                    setTicket(passenger, userId);
+                    ToggleStatus(seat_no, coach_no);
+                }
+                else {
+                    passenger = new Passenger(
+                            1, booking.getUserName(), booking.getAge(),
+                            booking.getPhoneNumber(), 0, "-", "CNF", pnrNumber,
+                            coach_no
+                    );
+                    setTicket(passenger, userId);
+                }
                 return true;
             }
             else {
+                passenger = new Passenger(
+                        1, booking.getUserName(), booking.getAge(),
+                        booking.getPhoneNumber(), -1, "-", "WL", pnrNumber,
+                        -1
+                );
+                setTicket(passenger, userId);
                 return false;
             }
 
@@ -67,13 +82,13 @@ public class BookTickets {
             connection.close();
         }
     }
-    public boolean bookPreference(Booking booking,String pnrNumber, String userId)throws Exception{
+    public boolean bookPreference(Booking booking,String preference,String pnrNumber, String userId)throws Exception{
         try {
             connection = database.getConnection();
             String sql = "select * from public.\"coach_table\" where berth_status = TRUE and \"Berth_position\" = ? order by \"Max_count\",seat_no asc limit 1";
             PreparedStatement statement = connection.prepareStatement(sql);
-            System.out.println(booking.getBerthPreference());
-            statement.setString(1,booking.getBerthPreference());
+            System.out.println(booking.getBerthPreference()+"   "+preference);
+            statement.setString(1,preference);
             ResultSet result = statement.executeQuery();
             int seat_no;
             String status,berthPosition;
@@ -83,13 +98,23 @@ public class BookTickets {
                 int coach_no = result.getInt("coach_no");
                 status = result.getString("Status");
                 berthPosition = result.getString("Berth_position");
-                passenger = new Passenger(
-                        1,booking.getUserName(), booking.getAge(),
-                        booking.getPhoneNumber(),seat_no,berthPosition,status,pnrNumber,
-                        coach_no
-                );
-                setTicket(passenger,userId);
-                ToggleStatus(seat_no,coach_no);
+                if(booking.getAge() > 5) {
+                    passenger = new Passenger(
+                            1, booking.getUserName(), booking.getAge(),
+                            booking.getPhoneNumber(), seat_no, berthPosition, status, pnrNumber,
+                            coach_no
+                    );
+                    setTicket(passenger, userId);
+                    ToggleStatus(seat_no, coach_no);
+                }
+                else {
+                    passenger = new Passenger(
+                            1, booking.getUserName(), booking.getAge(),
+                            booking.getPhoneNumber(), 0, "-", "CNF", pnrNumber,
+                            coach_no
+                    );
+                    setTicket(passenger, userId);
+                }
                 return true;
             }
             else{

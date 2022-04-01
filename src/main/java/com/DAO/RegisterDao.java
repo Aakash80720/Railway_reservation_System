@@ -12,7 +12,7 @@ public class RegisterDao {
     public boolean registerDao(User user) throws Exception{
         System.out.println("PNR number :"+user.getPnrNumber());
         try {
-            String sql = "insert into public.\"user\"(\"PNR_NO\",user_name,password,age,phone_number) values(?,?,?,?,?);";
+            String sql = "insert into public.\"user\"(\"pnr_no\",user_name,password,age,phone_number) values(?,?,crypt(?,gen_salt('bf')),?,?);";
             connection = database.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1,user.getPnrNumber());
